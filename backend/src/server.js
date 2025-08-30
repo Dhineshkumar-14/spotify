@@ -8,6 +8,7 @@ import albumRouter from "./routes/album.route.js";
 import songRouter from "./routes/song.route.js";
 import authRouter from "./routes/auth.route.js";
 import statRouter from "./routes/stat.route.js";
+import { clerkMiddleware } from "@clerk/express";
 
 dotenv.config();
 const app = express();
@@ -17,6 +18,9 @@ const PORT = process.env.PORT || 5000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use(clerkMiddleware());
+
 // Routes
 app.use("/api/users", userRouter);
 app.use("/api/admin", adminRouter);

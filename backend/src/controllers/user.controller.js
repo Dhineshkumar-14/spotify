@@ -5,7 +5,7 @@ export const getAllUsers = async (req, res, next) => {
     const users = await User.find({ clerkId: { $ne: req.auth.userId } });
     res.status(200).json(users);
   } catch (error) {
-    console.error("Error in auth controller " + error);
+    console.error("Error in getAllUsers " + error);
     next(error);
   }
 };

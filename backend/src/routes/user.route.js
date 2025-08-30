@@ -1,15 +1,9 @@
 import { Router } from "express";
+import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
+import { getAllUsers } from "../controllers/user.controller.js";
 
 const userRouter = Router();
 
-// Root endpoint: GET /api/users
-userRouter.get("/", (req, res) => {
-  res.send("Users API root is working ✅");
-});
-
-// Test endpoint: GET /api/users/Hello
-userRouter.get("/Hello", (req, res) => {
-  res.send("Hello World!");
-});
+userRouter.get("/", protectRoute, requireAdmin, getAllUsers);
 
 export default userRouter;

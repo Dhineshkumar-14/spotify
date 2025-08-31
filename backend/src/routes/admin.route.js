@@ -1,13 +1,12 @@
 import { Router } from "express";
-import { authCallback } from "../controllers/auth.controller.js";
-import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
 import {
   checkAdmin,
-  createSong,
-  deleteSong,
-  deleteAlbum,
   createAlbum,
+  createSong,
+  deleteAlbum,
+  deleteSong,
 } from "../controllers/admin.controller.js";
+import { protectRoute, requireAdmin } from "../middleware/auth.middleware.js";
 
 const adminRouter = Router();
 
